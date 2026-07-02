@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#f7f5f7">
+  <title>Flarius — Add contact</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="phone" id="add-friend-app">
+    <div class="status-bar">
+      <span class="status-bar__time">9:41</span>
+      <div class="status-bar__icons" aria-hidden="true">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M1 10.5h2v1.5H1V10.5Zm3.5-2.5h2v4h-2v-4Zm3.5-2.5h2v6.5h-2V5.5Zm3.5-3h2v9.5h-2V2.5Zm3.5 5h2v4.5h-2V7.5Z" fill="#000"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10.5a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Zm4.24-2.11a5.5 5.5 0 0 0-8.48 0 .75.75 0 1 0 1.16.95 4 4 0 0 1 6.16 0 .75.75 0 1 0 1.16-.95ZM15.07 5.3a9 9 0 0 0-14.14 0 .75.75 0 1 0 1.18.93 7.5 7.5 0 0 1 11.78 0 .75.75 0 1 0 1.18-.93Z" fill="#000"/></svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5" stroke="#000" stroke-opacity="0.35"/><rect x="2" y="2" width="17" height="8" rx="1.5" fill="#000"/><path d="M23 4.5v3a1.5 1.5 0 0 0 0-3Z" fill="#000" fill-opacity="0.4"/></svg>
+      </div>
+    </div>
+
+    <header class="p2p-nav">
+      <button class="p2p-nav__back" type="button" id="add-friend-back" aria-label="Back">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" stroke="#080550" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <h1 class="p2p-nav__title" id="add-friend-title">Add contact</h1>
+      <span class="p2p-nav__spacer" aria-hidden="true"></span>
+    </header>
+
+    <div class="screen-content add-friend-page">
+      <section class="add-friend-step" id="add-friend-step-menu">
+        <p class="add-friend-page__subtitle">Choose how you want to find someone on Flarius.</p>
+
+        <div class="add-friend-options">
+          <button class="add-friend-option" type="button" data-method="flarius">
+            <span class="add-friend-option__icon add-friend-option__icon--brand">
+              <img src="../assets/logomark.svg" width="24" height="24" alt="">
+            </span>
+            <span class="add-friend-option__body">
+              <strong>Flarius</strong>
+              <small>Send to an existing friend</small>
+            </span>
+            <span class="add-friend-option__chevron">›</span>
+          </button>
+          <button class="add-friend-option" type="button" data-method="fla-tag">
+            <span class="add-friend-option__icon">@</span>
+            <span class="add-friend-option__body">
+              <strong>FlaTag</strong>
+              <small>Search by username</small>
+            </span>
+            <span class="add-friend-option__chevron">›</span>
+          </button>
+          <button class="add-friend-option" type="button" data-method="contact">
+            <span class="add-friend-option__icon">☎</span>
+            <span class="add-friend-option__body">
+              <strong>Phone or email</strong>
+              <small>Find by mobile number or email</small>
+            </span>
+            <span class="add-friend-option__chevron">›</span>
+          </button>
+          <button class="add-friend-option" type="button" data-method="qr">
+            <span class="add-friend-option__icon">▦</span>
+            <span class="add-friend-option__body">
+              <strong>QR code</strong>
+              <small>Scan a Flarius ID</small>
+            </span>
+            <span class="add-friend-option__chevron">›</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="add-friend-step add-friend-step--hidden" id="add-friend-step-input">
+        <div class="contact-segment" id="contact-segment" hidden>
+          <button class="contact-segment__btn contact-segment__btn--active" type="button" data-contact-mode="phone">Phone</button>
+          <button class="contact-segment__btn" type="button" data-contact-mode="email">Email</button>
+        </div>
+
+        <label class="bank-form__field" for="add-contact-name">
+          <span class="bank-form__label">Name</span>
+          <input class="bank-form__input" id="add-contact-name" type="text" placeholder="Contact name" autocomplete="name">
+        </label>
+
+        <label class="bank-form__field" for="add-friend-input">
+          <span class="bank-form__label" id="add-friend-input-label">FlaTag</span>
+          <input class="bank-form__input" id="add-friend-input" type="text" autocomplete="off">
+        </label>
+        <p class="bank-form__hint" id="add-friend-input-hint">Enter the FlaTag without spaces.</p>
+        <button class="transfer-primary-btn" type="button" id="add-friend-search-btn">Continue</button>
+      </section>
+
+      <section class="add-friend-step add-friend-step--hidden" id="add-friend-step-qr">
+        <div class="add-friend-qr">
+          <div class="add-friend-qr__frame" aria-hidden="true">
+            <span class="qr-viewport__corner qr-viewport__corner--tl"></span>
+            <span class="qr-viewport__corner qr-viewport__corner--tr"></span>
+            <span class="qr-viewport__corner qr-viewport__corner--bl"></span>
+            <span class="qr-viewport__corner qr-viewport__corner--br"></span>
+          </div>
+          <p class="add-friend-qr__hint">Point your camera at your friend's Flarius ID QR code</p>
+          <button class="qr-demo-btn" type="button" id="add-friend-demo-scan">Demo: scan QR</button>
+        </div>
+      </section>
+
+      <section class="add-friend-step add-friend-step--hidden" id="add-friend-step-result">
+        <div class="add-friend-result" id="add-friend-result"></div>
+        <button class="transfer-primary-btn" type="button" id="add-friend-confirm-btn">Add contact</button>
+      </section>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/ui.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/add-friend.js?v=2"></script>
+</body>
+</html>

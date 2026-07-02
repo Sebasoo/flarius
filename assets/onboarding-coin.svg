@@ -1,0 +1,22 @@
+<svg width="148" height="148" viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="coin-rim" x1="24" y1="20" x2="124" y2="128" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E879F9"/>
+      <stop offset="0.5" stop-color="#985798"/>
+      <stop offset="1" stop-color="#724172"/>
+    </linearGradient>
+    <linearGradient id="coin-face" x1="44" y1="36" x2="104" y2="112" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7FF"/>
+      <stop offset="1" stop-color="#F3E8FF"/>
+    </linearGradient>
+    <filter id="coin-shadow" x="0" y="0" width="148" height="148" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#724172" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g filter="url(#coin-shadow)">
+    <circle cx="74" cy="74" r="58" fill="url(#coin-rim)"/>
+    <circle cx="74" cy="74" r="48" fill="url(#coin-face)" stroke="#E9D5FF" stroke-width="2"/>
+    <path d="M74 42c-14.5 0-26 7.2-26 16.2 0 5.2 4.2 9.8 10.8 12.6-8.8 2.6-14.8 8-14.8 14.2 0 9 11.5 16.2 26 16.2s26-7.2 26-16.2c0-6.2-6-11.6-14.8-14.2 6.6-2.8 10.8-7.4 10.8-12.6C100 49.2 88.5 42 74 42z" fill="#985798" fill-opacity="0.18"/>
+    <text x="74" y="82" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="700" fill="#724172">¬</text>
+  </g>
+</svg>

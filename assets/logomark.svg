@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 132.16 132.16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="logomark">
+<path id="Vector" d="M102.16 0H30C13.4315 0 0 13.4315 0 30V102.16C0 118.729 13.4315 132.16 30 132.16H102.16C118.729 132.16 132.16 118.729 132.16 102.16V30C132.16 13.4315 118.729 0 102.16 0Z" fill="url(#paint0_linear_0_13)"/>
+<path id="Vector_2" d="M43.17 112H23.02C21.92 112 21.02 111.1 21.02 110V89.6901C21.02 77.2301 30.9 67.0901 43.03 67.0901H89.14C90.24 67.0901 91.14 67.9901 91.14 69.0901V87.8301C91.14 88.9301 90.24 89.8301 89.14 89.8301H47.97C45.29 89.8301 43.03 92.1501 43.03 94.9001V112.14L43.17 112Z" fill="var(--fill-0, #FDFEFF)"/>
+<path id="Vector_3" d="M111.15 20.02C112.26 20.02 113.15 20.92 113.15 22.02V36.39C113.15 48.85 103.27 58.99 91.14 58.99L23.03 59.17C21.92 59.17 21.02 58.28 21.02 57.17V38.43C21.02 37.33 21.91 36.43 23.01 36.43L86.2 36.25C88.88 36.25 91.14 33.93 91.14 31.18V22.03C91.14 20.92 92.04 20.03 93.14 20.03H111.15V20.02Z" fill="var(--fill-0, #FDFEFF)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_13" x1="132.16" y1="0" x2="57.3725" y2="159.125" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FE91FE"/>
+<stop offset="1" stop-color="#FF740F"/>
+</linearGradient>
+</defs>
+</svg>

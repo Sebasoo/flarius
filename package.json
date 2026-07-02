@@ -1,0 +1,13 @@
+{
+  "name": "flarius-poc",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Flarius mobile banking prototype — static demo",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "dev": "npx --yes serve . -l 8765"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

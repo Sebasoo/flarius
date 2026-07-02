@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#fdfeff">
+  <title>Flarius — Home</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="phone home-page" id="app">
+    <div class="home-mesh" aria-hidden="true">
+      <span class="home-mesh__blob home-mesh__blob--1"></span>
+      <span class="home-mesh__blob home-mesh__blob--2"></span>
+      <span class="home-mesh__blob home-mesh__blob--3"></span>
+    </div>
+    <div class="status-bar">
+      <span class="status-bar__time">9:41</span>
+      <div class="status-bar__icons" aria-hidden="true">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M1 10.5h2v1.5H1V10.5Zm3.5-2.5h2v4h-2v-4Zm3.5-2.5h2v6.5h-2V5.5Zm3.5-3h2v9.5h-2V2.5Zm3.5 5h2v4.5h-2V7.5Z" fill="#000"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10.5a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Zm4.24-2.11a5.5 5.5 0 0 0-8.48 0 .75.75 0 1 0 1.16.95 4 4 0 0 1 6.16 0 .75.75 0 1 0 1.16-.95ZM15.07 5.3a9 9 0 0 0-14.14 0 .75.75 0 1 0 1.18.93 7.5 7.5 0 0 1 11.78 0 .75.75 0 1 0 1.18-.93Z" fill="#000"/></svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5" stroke="#000" stroke-opacity="0.35"/><rect x="2" y="2" width="17" height="8" rx="1.5" fill="#000"/><path d="M23 4.5v3a1.5 1.5 0 0 0 0-3Z" fill="#000" fill-opacity="0.4"/></svg>
+      </div>
+    </div>
+
+    <div class="screen-content">
+      <header class="header">
+        <div class="header__logo">
+          <img src="assets/logomark.svg" alt="Flarius">
+        </div>
+        <div class="header__actions">
+          <a class="assistant-btn" href="screens/smart-assistant.html" aria-label="Smart assistant">
+            <span class="consultant">
+              <img class="consultant__glow" src="assets/assistant-glow.svg" alt="">
+              <span class="consultant__button">
+                <img src="assets/assistant-icon.svg" alt="">
+              </span>
+            </span>
+            <img class="assistant-btn__dot" src="assets/notification-dot.svg" alt="">
+          </a>
+          <button class="avatar-btn" type="button" data-action="profile" aria-label="Profile">
+            <img src="assets/avatar.svg" alt="Profile">
+          </button>
+        </div>
+      </header>
+
+      <section class="balance-section">
+        <div class="balance-card">
+          <div class="balance-info">
+            <div class="cashback">
+              <img src="assets/icons/star.svg" width="20" height="20" alt="">
+              <span class="cashback__value">1,300</span>
+            </div>
+            <p class="balance-amount" id="balance-amount">515.00 €</p>
+            <button class="account-pill" type="button" data-action="account-switcher" aria-label="Switch currency account">
+              <span id="account-label">Euro</span>
+              <img src="assets/icons/chevron-down.svg" width="16" height="16" alt="">
+            </button>
+          </div>
+          <div class="switcher">
+            <img src="assets/switcher.svg" alt="">
+          </div>
+        </div>
+
+        <div class="quick-actions">
+          <a class="quick-action" href="screens/transfer.html">
+            <span class="quick-action__btn">
+              <img src="assets/icons/transfer.svg" width="24" height="24" alt="">
+            </span>
+            <span class="quick-action__label">Transfer</span>
+          </a>
+          <a class="quick-action" href="screens/exchange.html">
+            <span class="quick-action__btn">
+              <img src="assets/icons/exchange.svg" width="24" height="24" alt="">
+            </span>
+            <span class="quick-action__label">Exchange</span>
+          </a>
+          <a class="quick-action" href="screens/qr-pay.html">
+            <span class="quick-action__btn">
+              <img src="assets/icons/qr.svg" width="24" height="24" alt="">
+            </span>
+            <span class="quick-action__label">Pay with QR</span>
+          </a>
+          <button class="quick-action" type="button" data-action="more">
+            <span class="quick-action__btn">
+              <img src="assets/icons/more.svg" width="24" height="24" alt="">
+            </span>
+            <span class="quick-action__label">More</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="history-card">
+        <div class="history-card__header">
+          <h2 class="history-card__title">History</h2>
+          <a class="history-card__link" href="screens/history.html">See all</a>
+        </div>
+        <div class="transaction-list" id="transaction-list"></div>
+      </section>
+    </div>
+
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <div class="bottom-nav__items">
+        <a class="bottom-nav__item bottom-nav__item--active" href="index.html" aria-current="page">
+          <img src="assets/icons/home-active.svg" width="24" height="24" alt="">
+          <span>Home</span>
+        </a>
+        <a class="bottom-nav__item" href="screens/cards.html">
+          <img src="assets/icons/cards.svg" width="24" height="24" alt="">
+          <span>Cards</span>
+        </a>
+        <a class="bottom-nav__item" href="screens/marketplace.html">
+          <img src="assets/icons/marketplace.svg" width="24" height="24" alt="">
+          <span>Marketplace</span>
+        </a>
+      </div>
+      <div class="home-indicator" aria-hidden="true"></div>
+    </nav>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="sheet" id="account-sheet" role="dialog" aria-labelledby="sheet-title">
+    <h2 id="sheet-title">Your accounts</h2>
+    <div id="account-options"></div>
+  </div>
+  <div class="sheet" id="profile-sheet" role="dialog" aria-labelledby="profile-title">
+    <div class="profile-sheet__header">
+      <img class="profile-sheet__avatar" src="assets/avatar.svg" alt="Profile">
+      <div>
+        <h2 class="profile-sheet__name" id="profile-title">Robert Hotim</h2>
+        <p class="profile-sheet__tag" id="profile-fla-tag">@robert</p>
+        <p class="profile-sheet__account" id="profile-account-label">Euro</p>
+      </div>
+    </div>
+    <button class="profile-sheet__action" type="button" data-action="my-id">
+      <span class="profile-sheet__action-icon">▦</span>
+      <span class="profile-sheet__action-body">
+        <strong>My ID</strong>
+        <small>Show your FlaTag QR code</small>
+      </span>
+      <span class="profile-sheet__action-chevron">›</span>
+    </button>
+    <button class="profile-sheet__reset" type="button" data-action="reset-demo">Clear demo</button>
+  </div>
+
+  <div class="sheet" id="my-id-sheet" role="dialog" aria-labelledby="my-id-title">
+    <h2 id="my-id-title">My ID</h2>
+    <p class="profile-my-id__tag" id="my-id-tag">@robert</p>
+    <div class="profile-my-id__qr">
+      <img src="assets/qr-demo.svg" alt="Flarius ID QR code" id="my-id-qr">
+    </div>
+    <p class="profile-my-id__hint">Let friends scan this code to find you on Flarius.</p>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script src="js/auth-state.js"></script>
+  <script>
+    if (FlariusAuth.redirectIfNeeded('screens/auth.html')) {
+      document.documentElement.classList.add('auth-redirecting');
+    }
+  </script>
+  <script src="js/ui.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

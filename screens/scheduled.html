@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#f7f5f7">
+  <title>Flarius — Scheduled transfers</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="phone" id="scheduled-app">
+    <div class="status-bar">
+      <span class="status-bar__time">9:41</span>
+      <div class="status-bar__icons" aria-hidden="true">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M1 10.5h2v1.5H1V10.5Zm3.5-2.5h2v4h-2v-4Zm3.5-2.5h2v6.5h-2V5.5Zm3.5-3h2v9.5h-2V2.5Zm3.5 5h2v4.5h-2V7.5Z" fill="#000"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10.5a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Zm4.24-2.11a5.5 5.5 0 0 0-8.48 0 .75.75 0 1 0 1.16.95 4 4 0 0 1 6.16 0 .75.75 0 1 0 1.16-.95ZM15.07 5.3a9 9 0 0 0-14.14 0 .75.75 0 1 0 1.18.93 7.5 7.5 0 0 1 11.78 0 .75.75 0 1 0 1.18-.93Z" fill="#000"/></svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5" stroke="#000" stroke-opacity="0.35"/><rect x="2" y="2" width="17" height="8" rx="1.5" fill="#000"/><path d="M23 4.5v3a1.5 1.5 0 0 0 0-3Z" fill="#000" fill-opacity="0.4"/></svg>
+      </div>
+    </div>
+
+    <header class="p2p-nav">
+      <button class="p2p-nav__back" type="button" id="scheduled-back" aria-label="Back">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" stroke="#080550" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <h1 class="p2p-nav__title" id="scheduled-title">Scheduled</h1>
+      <button class="p2p-nav__add" type="button" id="scheduled-add" aria-label="New scheduled transfer">+</button>
+    </header>
+
+    <div class="screen-content scheduled-page">
+      <section class="scheduled-step" id="scheduled-step-list">
+        <div class="scheduled-list" id="scheduled-list"></div>
+      </section>
+
+      <section class="scheduled-step scheduled-step--hidden" id="scheduled-step-recipient">
+        <p class="scheduled-page__subtitle">Who do you want to pay?</p>
+        <div class="scheduled-recipients" id="scheduled-recipients"></div>
+      </section>
+
+      <section class="scheduled-step scheduled-step--hidden" id="scheduled-step-details">
+        <button class="p2p-recipient-card" type="button" id="scheduled-change-recipient">
+          <span id="scheduled-recipient-avatar" class="p2p-recipient-card__avatar-slot"></span>
+          <span class="p2p-recipient-card__info">
+            <span class="p2p-recipient-card__name" id="scheduled-recipient-name">Recipient</span>
+            <span class="p2p-recipient-card__tag" id="scheduled-recipient-subtitle">Details</span>
+          </span>
+          <img class="p2p-recipient-card__chevron" src="../assets/icons/chevron-down.svg" width="20" height="20" alt="">
+        </button>
+
+        <label class="bank-form__field" for="scheduled-amount">
+          <span class="bank-form__label">Amount</span>
+          <input class="bank-form__input" id="scheduled-amount" type="text" inputmode="decimal" placeholder="0.00">
+        </label>
+
+        <label class="bank-form__field" for="scheduled-frequency">
+          <span class="bank-form__label">Frequency</span>
+          <div class="bank-form__select-wrap">
+            <select class="bank-form__select" id="scheduled-frequency">
+              <option value="Weekly">Weekly</option>
+              <option value="Monthly" selected>Monthly</option>
+              <option value="Quarterly">Quarterly</option>
+            </select>
+            <img src="../assets/icons/chevron-down.svg" width="16" height="16" alt="">
+          </div>
+        </label>
+
+        <label class="bank-form__field" for="scheduled-date">
+          <span class="bank-form__label">Start date</span>
+          <input class="bank-form__input" id="scheduled-date" type="date">
+        </label>
+
+        <label class="bank-form__field" for="scheduled-note">
+          <span class="bank-form__label">Reference (optional)</span>
+          <input class="bank-form__input" id="scheduled-note" type="text" placeholder="What's this for?" maxlength="60">
+        </label>
+
+        <button class="transfer-primary-btn" type="button" id="scheduled-review-btn">Review</button>
+      </section>
+
+      <section class="scheduled-step scheduled-step--hidden" id="scheduled-step-review">
+        <div class="scheduled-review" id="scheduled-review"></div>
+        <button class="transfer-primary-btn" type="button" id="scheduled-confirm-btn">Schedule transfer</button>
+      </section>
+
+      <section class="scheduled-step scheduled-step--hidden" id="scheduled-step-success">
+        <div class="qr-success">
+          <div class="qr-success__icon">✓</div>
+          <h2>Transfer scheduled</h2>
+          <p id="scheduled-success-text">Your recurring transfer is set up.</p>
+          <button class="qr-success__done" type="button" id="scheduled-done-btn">Done</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/ui.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/scheduled.js"></script>
+</body>
+</html>

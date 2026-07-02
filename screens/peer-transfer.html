@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#f7f5f7">
+  <title>Flarius — Send to Flarius</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="phone" id="peer-transfer-app">
+    <div class="status-bar">
+      <span class="status-bar__time">9:41</span>
+      <div class="status-bar__icons" aria-hidden="true">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M1 10.5h2v1.5H1V10.5Zm3.5-2.5h2v4h-2v-4Zm3.5-2.5h2v6.5h-2V5.5Zm3.5-3h2v9.5h-2V2.5Zm3.5 5h2v4.5h-2V7.5Z" fill="#000"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10.5a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Zm4.24-2.11a5.5 5.5 0 0 0-8.48 0 .75.75 0 1 0 1.16.95 4 4 0 0 1 6.16 0 .75.75 0 1 0 1.16-.95ZM15.07 5.3a9 9 0 0 0-14.14 0 .75.75 0 1 0 1.18.93 7.5 7.5 0 0 1 11.78 0 .75.75 0 1 0 1.18-.93Z" fill="#000"/></svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5" stroke="#000" stroke-opacity="0.35"/><rect x="2" y="2" width="17" height="8" rx="1.5" fill="#000"/><path d="M23 4.5v3a1.5 1.5 0 0 0 0-3Z" fill="#000" fill-opacity="0.4"/></svg>
+      </div>
+    </div>
+
+    <header class="p2p-nav">
+      <button class="p2p-nav__back" type="button" id="p2p-back" aria-label="Back">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" stroke="#080550" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <h1 class="p2p-nav__title" id="p2p-nav-title">Flarius friends</h1>
+      <button class="p2p-nav__add" type="button" id="p2p-add-friend" aria-label="Add friend">+</button>
+    </header>
+
+    <div class="screen-content p2p-page">
+      <section class="p2p-step" id="p2p-step-peers">
+        <label class="p2p-search" for="p2p-search">
+          <input id="p2p-search" type="search" placeholder="Search by name or FlaTag" autocomplete="off">
+          <span class="p2p-search__icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="9" cy="9" r="5.5" stroke="#757575" stroke-width="1.5"/>
+              <path d="M13.5 13.5L17 17" stroke="#757575" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="p2p-peers-card">
+          <h2 class="p2p-peers-card__title">Friends</h2>
+          <div class="p2p-peers-list" id="p2p-peers-list"></div>
+        </div>
+      </section>
+
+      <section class="p2p-step p2p-step--hidden" id="p2p-step-details">
+        <button class="p2p-recipient-card" type="button" id="p2p-change-peer">
+          <span id="p2p-recipient-avatar" class="p2p-recipient-card__avatar-slot"></span>
+          <span class="p2p-recipient-card__info">
+            <span class="p2p-recipient-card__name" id="p2p-recipient-name">Angela Brown</span>
+            <span class="p2p-recipient-card__tag" id="p2p-recipient-tag">#angela12345</span>
+          </span>
+          <img class="p2p-recipient-card__chevron" src="../assets/icons/chevron-down.svg" width="20" height="20" alt="">
+        </button>
+
+        <div class="p2p-amount-section">
+          <label class="p2p-amount-section__label" for="p2p-amount">Amount</label>
+          <div class="p2p-amount-input p2p-amount-input--focus">
+            <input class="p2p-amount-input__value" id="p2p-amount" type="text" inputmode="decimal" placeholder="0.00" autocomplete="off">
+            <button class="xfer-currency-btn" type="button" id="p2p-account-btn">
+              <span class="xfer-currency-btn__flag" id="p2p-account-flag">🇪🇺</span>
+              <span class="xfer-currency-btn__code" id="p2p-account-code">EUR</span>
+              <img src="../assets/icons/chevron-down.svg" width="16" height="16" alt="">
+            </button>
+          </div>
+          <p class="xfer-balance-hint" id="p2p-account-balance">Available 515.00 EUR</p>
+          <div class="p2p-amount-chips" id="p2p-amount-chips">
+            <button class="p2p-amount-chip" type="button" data-amount="10">10</button>
+            <button class="p2p-amount-chip" type="button" data-amount="20">20</button>
+            <button class="p2p-amount-chip" type="button" data-amount="50">50</button>
+            <button class="p2p-amount-chip" type="button" data-amount="100">100</button>
+            <button class="p2p-amount-chip" type="button" data-amount="150">150</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="p2p-step p2p-step--hidden p2p-step--success" id="p2p-step-success">
+        <div class="p2p-success" id="p2p-success">
+          <div class="p2p-success__ambient" aria-hidden="true">
+            <span class="p2p-success__blob p2p-success__blob--1"></span>
+            <span class="p2p-success__blob p2p-success__blob--2"></span>
+          </div>
+
+          <div class="p2p-success__scene" aria-hidden="true">
+            <span class="p2p-success__ring p2p-success__ring--1"></span>
+            <span class="p2p-success__ring p2p-success__ring--2"></span>
+            <span class="p2p-success__ring p2p-success__ring--3"></span>
+            <span class="p2p-success__glow"></span>
+            <div class="p2p-success__check">
+              <svg class="p2p-success__check-svg" width="96" height="96" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+                <circle class="p2p-success__check-bg" cx="48" cy="48" r="44" fill="url(#p2p-check-gradient)"/>
+                <circle cx="48" cy="48" r="44" fill="#cff7d3" fill-opacity="0.92"/>
+                <path class="p2p-success__check-path" d="M28 49.5L41.5 63L68 36.5" stroke="#009951" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <defs>
+                  <linearGradient id="p2p-check-gradient" x1="12" y1="8" x2="84" y2="88" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#fe91fe" stop-opacity="0.35"/>
+                    <stop offset="1" stop-color="#ff740f" stop-opacity="0.2"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <span class="p2p-success__confetti p2p-success__confetti--1"></span>
+            <span class="p2p-success__confetti p2p-success__confetti--2"></span>
+            <span class="p2p-success__confetti p2p-success__confetti--3"></span>
+            <span class="p2p-success__confetti p2p-success__confetti--4"></span>
+            <span class="p2p-success__confetti p2p-success__confetti--5"></span>
+            <span class="p2p-success__confetti p2p-success__confetti--6"></span>
+            <span class="p2p-success__particle p2p-success__particle--1"></span>
+            <span class="p2p-success__particle p2p-success__particle--2"></span>
+            <span class="p2p-success__particle p2p-success__particle--3"></span>
+            <span class="p2p-success__particle p2p-success__particle--4"></span>
+            <span class="p2p-success__particle p2p-success__particle--5"></span>
+            <span class="p2p-success__particle p2p-success__particle--6"></span>
+          </div>
+
+          <p class="p2p-success__amount" id="p2p-success-amount" aria-hidden="true">0.00 INR</p>
+          <h2 class="p2p-success__title">Transfer sent</h2>
+          <p class="p2p-success__subtitle" id="p2p-success-subtitle">Your transfer is on its way</p>
+
+          <div class="p2p-success__card" id="p2p-success-card"></div>
+
+          <button class="p2p-success__download" type="button" id="p2p-download-btn">
+            <img src="../assets/icons/download.svg" width="20" height="20" alt="">
+            Download confirmation
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <div class="p2p-footer" id="p2p-footer">
+      <button class="p2p-send-btn p2p-send-btn--hidden" type="button" id="p2p-send-btn">Send</button>
+      <button class="p2p-done-btn p2p-done-btn--hidden" type="button" id="p2p-done-btn">Done</button>
+      <div class="p2p-keypad p2p-keypad--hidden" id="p2p-keypad" aria-hidden="true">
+        <div class="p2p-keypad__grid" id="p2p-keypad-grid"></div>
+      </div>
+      <div class="home-indicator" aria-hidden="true"></div>
+    </div>
+
+    <div class="xfer-sheet xfer-sheet--hidden" id="xfer-account-sheet" aria-hidden="true">
+      <div class="xfer-sheet__panel">
+        <header class="xfer-sheet__header">
+          <button class="xfer-sheet__close" type="button" id="xfer-account-close" aria-label="Close">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" stroke="#080550" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <h2 class="xfer-sheet__title">Pay from</h2>
+          <span class="xfer-sheet__spacer" aria-hidden="true"></span>
+        </header>
+        <div class="xfer-sheet__list" id="xfer-account-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/ui.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/transfer-account.js"></script>
+  <script src="../js/peer-transfer.js?v=2"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>

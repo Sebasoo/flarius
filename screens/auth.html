@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#fdfeff">
+  <title>Flarius — Sign in</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="phone auth-page" id="auth-app">
+    <div class="auth-ambient" aria-hidden="true">
+      <span class="auth-ambient__orb auth-ambient__orb--1"></span>
+      <span class="auth-ambient__orb auth-ambient__orb--2"></span>
+      <span class="auth-ambient__orb auth-ambient__orb--3"></span>
+    </div>
+
+    <div class="status-bar">
+      <span class="status-bar__time">9:41</span>
+      <div class="status-bar__icons" aria-hidden="true">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M1 10.5h2v1.5H1V10.5Zm3.5-2.5h2v4h-2v-4Zm3.5-2.5h2v6.5h-2V5.5Zm3.5-3h2v9.5h-2V2.5Zm3.5 5h2v4.5h-2V7.5Z" fill="#000"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10.5a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Zm4.24-2.11a5.5 5.5 0 0 0-8.48 0 .75.75 0 1 0 1.16.95 4 4 0 0 1 6.16 0 .75.75 0 1 0 1.16-.95ZM15.07 5.3a9 9 0 0 0-14.14 0 .75.75 0 1 0 1.18.93 7.5 7.5 0 0 1 11.78 0 .75.75 0 1 0 1.18-.93Z" fill="#000"/></svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5" stroke="#000" stroke-opacity="0.35"/><rect x="2" y="2" width="17" height="8" rx="1.5" fill="#000"/><path d="M23 4.5v3a1.5 1.5 0 0 0 0-3Z" fill="#000" fill-opacity="0.4"/></svg>
+      </div>
+    </div>
+
+    <div class="auth-progress" id="auth-progress" aria-hidden="true">
+      <div class="auth-progress__track">
+        <div class="auth-progress__fill" id="auth-progress-fill"></div>
+      </div>
+    </div>
+
+    <header class="auth-topbar" id="auth-topbar">
+      <button class="auth-topbar__back auth-topbar__back--hidden" type="button" id="auth-back" aria-label="Back">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" stroke="#080550" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="auth-topbar__skip" type="button" id="auth-skip">Skip</button>
+    </header>
+
+    <div class="auth-body">
+      <section class="auth-step auth-step--active" data-step="welcome">
+        <div class="auth-welcome-v3">
+          <div class="auth-welcome-v3__card" id="welcome-slide">
+            <div class="auth-welcome-v3__art auth-anim auth-anim--1" id="welcome-illustration">
+              <img id="welcome-illustration-img" src="../assets/onboarding/earnings.svg" alt="">
+              <svg class="auth-welcome-v3__wave" viewBox="0 0 393 48" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M0 24C65 8 130 40 196 24S327 8 393 24V48H0V24Z" fill="#fdfeff"/>
+              </svg>
+            </div>
+            <div class="auth-welcome-v3__icon-wrap auth-anim auth-anim--2" id="welcome-icon-wrap" style="background:#1565C0">
+              <span class="auth-welcome-v3__icon" id="welcome-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="3" y="7" width="20" height="14" rx="3" stroke="#fff" stroke-width="2"/><path d="M3 11h20" stroke="#fff" stroke-width="2"/><circle cx="19" cy="16" r="2" fill="#fff"/></svg></span>
+            </div>
+            <div class="auth-welcome-v3__content auth-anim auth-anim--3">
+              <h2 class="auth-welcome-v3__title" id="welcome-subtitle">Manage your earnings at sea</h2>
+              <p class="auth-welcome-v3__desc" id="welcome-description">Keep track of your income and stay on top of what matters.</p>
+              <div class="auth-dots auth-dots--welcome" id="welcome-dots" aria-hidden="true">
+                <span class="auth-dots__dot auth-dots__dot--active"></span>
+                <span class="auth-dots__dot"></span>
+                <span class="auth-dots__dot"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="auth-step" data-step="sign-in">
+        <div class="auth-step-panel">
+          <div class="auth-step-hero auth-anim auth-anim--1">
+            <span class="auth-step-hero__badge">Secure sign in</span>
+            <h1 class="auth-title auth-title--inline">Sign in method</h1>
+            <p class="auth-subtitle auth-subtitle--tight">Choose how you want to access your account</p>
+          </div>
+          <label class="auth-field auth-anim auth-anim--2" for="auth-phone">
+            <span class="auth-field__label">Phone number</span>
+            <input class="auth-field__input" id="auth-phone" type="tel" inputmode="tel" placeholder="+33 6 12 34 56 78" value="+33 6 12 34 56 78">
+          </label>
+          <button class="auth-btn auth-btn--gradient auth-anim auth-anim--3" type="button" id="auth-phone-continue">Continue</button>
+          <p class="auth-divider auth-anim auth-anim--4" aria-hidden="true"><span>or</span></p>
+          <button class="auth-btn auth-btn--social auth-anim auth-anim--5" type="button" data-social="Microsoft">
+            <span class="auth-btn__icon"><img src="../assets/icons/microsoft.svg" width="18" height="18" alt=""></span>
+            <span>Continue with Microsoft</span>
+          </button>
+          <button class="auth-btn auth-btn--social auth-anim auth-anim--6" type="button" data-social="Google">
+            <span class="auth-btn__icon"><img src="../assets/icons/google.svg" width="18" height="18" alt=""></span>
+            <span>Continue with Google</span>
+          </button>
+          <p class="auth-hint auth-anim auth-anim--7">Demo mode · any phone or social sign-in works</p>
+        </div>
+      </section>
+
+      <section class="auth-step" data-step="otp">
+        <div class="auth-step-panel">
+          <div class="auth-step-hero auth-anim auth-anim--1">
+            <span class="auth-step-hero__badge">Verification</span>
+            <h1 class="auth-title auth-title--inline">Enter the code from SMS</h1>
+            <p class="auth-subtitle auth-subtitle--tight">We sent a 6-digit code to your phone</p>
+          </div>
+          <div class="auth-otp auth-anim auth-anim--2" id="auth-otp">
+            <input class="auth-otp__box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 1">
+            <input class="auth-otp__box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 2">
+            <input class="auth-otp__box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 3">
+            <input class="auth-otp__box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 4">
+            <input class="auth-otp__box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 5">
+            <input class="auth-otp__box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 6">
+          </div>
+          <p class="auth-otp__timer auth-anim auth-anim--3" id="auth-otp-timer">Resend code in 00:43</p>
+          <button class="auth-link auth-link--hidden auth-anim auth-anim--3" type="button" id="auth-otp-resend">Resend code</button>
+          <p class="auth-hint auth-anim auth-anim--4">Demo: enter any 6 digits</p>
+        </div>
+      </section>
+
+      <section class="auth-step" data-step="personal">
+        <div class="auth-step-panel">
+          <div class="auth-step-head auth-anim auth-anim--1">
+            <span class="auth-step-hero__badge">Profile</span>
+            <h1 class="auth-title auth-title--sm">Personal data</h1>
+            <p class="auth-subtitle">Confirm your personal details or edit in case of mistakes</p>
+          </div>
+          <label class="auth-field auth-anim auth-anim--2" for="auth-first-name">
+            <span class="auth-field__label">First name</span>
+            <input class="auth-field__input" id="auth-first-name" type="text" value="Robert">
+          </label>
+          <label class="auth-field auth-anim auth-anim--3" for="auth-last-name">
+            <span class="auth-field__label">Last name</span>
+            <input class="auth-field__input" id="auth-last-name" type="text" value="Hotim">
+          </label>
+          <label class="auth-field auth-anim auth-anim--4" for="auth-email">
+            <span class="auth-field__label">Email</span>
+            <input class="auth-field__input" id="auth-email" type="email" value="robert@flarius.com">
+          </label>
+        </div>
+      </section>
+
+      <section class="auth-step" data-step="fla-tag">
+        <div class="auth-step-panel">
+          <div class="auth-step-head auth-anim auth-anim--1">
+            <span class="auth-step-hero__badge">Identity</span>
+            <h1 class="auth-title auth-title--sm">Your FlaTag</h1>
+            <p class="auth-subtitle">Here is how your peers will see your account</p>
+          </div>
+          <div class="auth-contact-preview auth-anim auth-anim--2">
+            <span class="avatar avatar--initials" id="auth-preview-avatar" style="--avatar-bg:#F5F3FF;--avatar-fg:#6D28D9"><span class="avatar__label">RH</span></span>
+            <div>
+              <p class="auth-contact-preview__name" id="auth-preview-name">Robert Hotim</p>
+              <p class="auth-contact-preview__tag" id="auth-preview-tag">#robert</p>
+            </div>
+          </div>
+          <label class="auth-field auth-anim auth-anim--3" for="auth-fla-tag">
+            <span class="auth-field__label">FlaTag</span>
+            <div class="auth-field__prefix-wrap">
+              <span class="auth-field__prefix">#</span>
+              <input class="auth-field__input auth-field__input--prefix" id="auth-fla-tag" type="text" value="robert" autocapitalize="off">
+            </div>
+          </label>
+        </div>
+      </section>
+
+      <section class="auth-step" data-step="pin">
+        <div class="auth-step-panel auth-step-panel--center">
+          <div class="auth-step-head auth-anim auth-anim--1">
+            <span class="auth-step-hero__badge">Security</span>
+            <h1 class="auth-title auth-title--sm">Create security code</h1>
+            <p class="auth-subtitle">Create a 4-digit combination and remember it</p>
+          </div>
+          <div class="auth-pin-dots auth-anim auth-anim--2" id="auth-pin-dots" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="auth-keypad auth-anim auth-anim--3" id="auth-keypad">
+            <button type="button" data-key="1">1</button>
+            <button type="button" data-key="2">2</button>
+            <button type="button" data-key="3">3</button>
+            <button type="button" data-key="4">4</button>
+            <button type="button" data-key="5">5</button>
+            <button type="button" data-key="6">6</button>
+            <button type="button" data-key="7">7</button>
+            <button type="button" data-key="8">8</button>
+            <button type="button" data-key="9">9</button>
+            <span class="auth-keypad__spacer"></span>
+            <button type="button" data-key="0">0</button>
+            <button type="button" class="auth-keypad__back" data-key="back" aria-label="Delete">⌫</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="auth-step" data-step="pin-confirm">
+        <div class="auth-step-panel auth-step-panel--center">
+          <div class="auth-step-head auth-anim auth-anim--1">
+            <span class="auth-step-hero__badge">Security</span>
+            <h1 class="auth-title auth-title--sm">Confirm security code</h1>
+            <p class="auth-subtitle">Repeat the combination from the previous step</p>
+          </div>
+          <div class="auth-pin-dots auth-anim auth-anim--2" id="auth-pin-confirm-dots" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <p class="auth-error auth-error--hidden auth-anim auth-anim--2" id="auth-pin-error">Codes do not match. Try again.</p>
+          <div class="auth-keypad auth-anim auth-anim--3" id="auth-keypad-confirm">
+            <button type="button" data-key="1">1</button>
+            <button type="button" data-key="2">2</button>
+            <button type="button" data-key="3">3</button>
+            <button type="button" data-key="4">4</button>
+            <button type="button" data-key="5">5</button>
+            <button type="button" data-key="6">6</button>
+            <button type="button" data-key="7">7</button>
+            <button type="button" data-key="8">8</button>
+            <button type="button" data-key="9">9</button>
+            <span class="auth-keypad__spacer"></span>
+            <button type="button" data-key="0">0</button>
+            <button type="button" class="auth-keypad__back" data-key="back" aria-label="Delete">⌫</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="auth-step" data-step="face-id">
+        <div class="auth-step-panel auth-step-panel--center">
+          <div class="auth-step-head auth-anim auth-anim--1">
+            <span class="auth-step-hero__badge">Biometrics</span>
+            <h1 class="auth-title auth-title--sm">Activate Face ID</h1>
+            <p class="auth-subtitle">Enable Face ID to access the app faster</p>
+          </div>
+          <div class="auth-face-stage auth-anim auth-anim--2" aria-hidden="true">
+            <span class="auth-face-scan auth-face-scan--1"></span>
+            <span class="auth-face-scan auth-face-scan--2"></span>
+            <span class="auth-face-scan auth-face-scan--3"></span>
+            <div class="auth-face-icon">
+              <svg width="72" height="72" viewBox="0 0 88 88" fill="none">
+                <rect x="8" y="8" width="72" height="72" rx="20" stroke="#0B3D5C" stroke-width="2"/>
+                <circle cx="34" cy="38" r="4" fill="#1A8A9E"/>
+                <circle cx="54" cy="38" r="4" fill="#1A8A9E"/>
+                <path d="M32 54c4 6 20 6 24 0" stroke="#0B3D5C" stroke-width="2" stroke-linecap="round"/>
+                <path d="M44 18v8M24 28l6 4M64 28l-6 4" stroke="#1A8A9E" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="auth-face-actions auth-anim auth-anim--3">
+            <button class="auth-btn auth-btn--gradient" type="button" id="auth-face-enable">Activate Face ID</button>
+            <button class="auth-btn auth-btn--secondary" type="button" id="auth-face-skip">Not now</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="auth-step" data-step="done">
+        <div class="auth-welcome auth-welcome--done">
+          <div class="auth-logo auth-anim auth-anim--1">
+            <img src="../assets/logomark.svg" width="36" height="36" alt="">
+            <span class="auth-logo__text">flarius</span>
+          </div>
+          <h1 class="auth-welcome__title auth-anim auth-anim--2" id="auth-done-title">Welcome aboard, Robert!</h1>
+          <div class="auth-hero-stage auth-anim auth-anim--3">
+            <span class="auth-hero-ring auth-hero-ring--1"></span>
+            <span class="auth-hero-ring auth-hero-ring--2"></span>
+            <span class="auth-hero-glow"></span>
+            <div class="auth-welcome__illustration">
+              <img src="../assets/onboarding/welcome-aboard.svg" alt="Welcome aboard">
+            </div>
+          </div>
+          <p class="auth-welcome__slide-text auth-anim auth-anim--4">You're ready to manage money at sea</p>
+        </div>
+      </section>
+    </div>
+
+    <footer class="auth-footer" id="auth-footer">
+      <button class="auth-btn auth-btn--gradient auth-btn--block auth-btn--shine" type="button" id="auth-primary">Start</button>
+    </footer>
+
+    <div class="auth-loading auth-loading--hidden" id="auth-loading" aria-live="polite">
+      <div class="auth-loading__card">
+        <div class="auth-loading__spinner" aria-hidden="true"></div>
+        <p class="auth-loading__text" id="auth-loading-text">Signing in…</p>
+      </div>
+    </div>
+
+    <div class="home-indicator" aria-hidden="true"></div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/auth-state.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/auth.js?v=6"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>

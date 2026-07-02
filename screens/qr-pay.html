@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#111118">
+  <title>Flarius — Pay with QR</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="phone phone--qr" id="qr-app">
+    <div class="status-bar">
+      <span class="status-bar__time">9:41</span>
+      <div class="status-bar__icons" aria-hidden="true">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M1 10.5h2v1.5H1V10.5Zm3.5-2.5h2v4h-2v-4Zm3.5-2.5h2v6.5h-2V5.5Zm3.5-3h2v9.5h-2V2.5Zm3.5 5h2v4.5h-2V7.5Z" fill="#fff"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10.5a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Zm4.24-2.11a5.5 5.5 0 0 0-8.48 0 .75.75 0 1 0 1.16.95 4 4 0 0 1 6.16 0 .75.75 0 1 0 1.16-.95ZM15.07 5.3a9 9 0 0 0-14.14 0 .75.75 0 1 0 1.18.93 7.5 7.5 0 0 1 11.78 0 .75.75 0 1 0 1.18-.93Z" fill="#fff"/></svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5" stroke="#fff" stroke-opacity="0.35"/><rect x="2" y="2" width="17" height="8" rx="1.5" fill="#fff"/><path d="M23 4.5v3a1.5 1.5 0 0 0 0-3Z" fill="#fff" fill-opacity="0.4"/></svg>
+      </div>
+    </div>
+
+    <div class="qr-screen">
+      <div class="qr-topbar">
+        <a class="qr-topbar__back" href="../index.html" aria-label="Back">
+          <img src="../assets/icons/back.svg" width="24" height="24" alt="">
+        </a>
+        <h1 class="qr-topbar__title">Pay with QR</h1>
+        <button class="qr-topbar__flash" type="button" id="flash-btn" aria-label="Toggle flashlight">
+          <img src="../assets/icons/flashlight.svg" width="24" height="24" alt="">
+        </button>
+      </div>
+
+      <div class="qr-viewport" id="qr-viewport">
+        <div class="qr-viewport__feed" aria-hidden="true"></div>
+        <div class="qr-viewport__frame">
+          <span class="qr-viewport__corner qr-viewport__corner--tl"></span>
+          <span class="qr-viewport__corner qr-viewport__corner--tr"></span>
+          <span class="qr-viewport__corner qr-viewport__corner--bl"></span>
+          <span class="qr-viewport__corner qr-viewport__corner--br"></span>
+          <div class="qr-viewport__line"></div>
+        </div>
+        <p class="qr-viewport__hint">Point your camera at the merchant QR code</p>
+      </div>
+
+      <div class="qr-panel">
+        <p class="qr-panel__title">QR scanning</p>
+        <p class="qr-panel__text">Camera is not available in this prototype — use demo scan to walk through the payment flow.</p>
+        <button class="qr-demo-btn" type="button" id="demo-scan-btn">Demo: scan QR</button>
+        <button class="qr-link-btn" type="button" id="show-qr-btn">Show my payment QR</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <div class="sheet" id="pay-sheet" role="dialog" aria-labelledby="pay-title">
+    <h2 id="pay-title">Confirm payment</h2>
+    <div class="qr-sheet__merchant">
+      <div class="qr-sheet__merchant-icon">☕</div>
+      <div>
+        <p class="qr-sheet__merchant-name">Blue Tokai Coffee</p>
+        <p class="qr-sheet__merchant-id">UPI ID: bluetokai@flarius</p>
+      </div>
+    </div>
+    <label class="qr-sheet__label" for="amount">Amount</label>
+    <input class="qr-sheet__amount" id="amount" type="text" inputmode="decimal" value="250.00 ₹">
+    <button class="qr-sheet__pay" type="button" id="pay-btn">Pay 250.00 ₹</button>
+  </div>
+
+  <div class="sheet" id="my-qr-sheet" role="dialog" aria-labelledby="my-qr-title">
+    <h2 id="my-qr-title">My payment QR</h2>
+    <div class="qr-sheet__qr">
+      <img src="../assets/qr-demo.svg" alt="Flarius demo QR code">
+    </div>
+    <p class="qr-panel__text" style="margin-bottom: 0; text-align: center;">Show this code to receive a transfer to <strong>Personal (INR)</strong></p>
+  </div>
+
+  <div class="sheet" id="success-sheet" role="dialog" aria-labelledby="success-title">
+    <div class="qr-success">
+      <div class="qr-success__icon">✓</div>
+      <h2 id="success-title">Payment successful</h2>
+      <p id="success-text">250.00 ₹ sent to Blue Tokai Coffee</p>
+      <button class="qr-success__done" type="button" id="success-done-btn">Back to Home</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/ui.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/qr-pay.js"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>
