@@ -10,33 +10,18 @@ const STEPS = [
   'done',
 ];
 
-const WELCOME_ICONS = {
-  wallet: '<svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="3" y="7" width="20" height="14" rx="3" stroke="#fff" stroke-width="2"/><path d="M3 11h20" stroke="#fff" stroke-width="2"/><circle cx="19" cy="16" r="2" fill="#fff"/></svg>',
-  send: '<svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M3 13L23 5l-5 16-4-6-6-2 4-2 4-6z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg>',
-  shield: '<svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 3l8 3v7c0 5.5-3.5 9.5-8 10-4.5-.5-8-4.5-8-10V6l8-3z" stroke="#fff" stroke-width="2"/><path d="M9 13l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-};
-
 const WELCOME_SLIDES = [
   {
     title: 'Manage your earnings at sea',
-    description: 'Keep track of your income and stay on top of what matters.',
-    image: '../assets/onboarding/earnings.svg',
-    icon: 'wallet',
-    accent: '#1565C0',
+    image: '../assets/onboarding/onboarding-earnings.png',
   },
   {
     title: 'Send money home in seconds',
-    description: 'Fast, secure transfers to your loved ones, anytime, anywhere.',
-    image: '../assets/onboarding/transfer.svg',
-    icon: 'send',
-    accent: '#D4577A',
+    image: '../assets/onboarding/onboarding-transfer.png',
   },
   {
     title: 'Stay in control of spending',
-    description: 'Monitor your expenses, set limits, and make smarter financial choices.',
-    image: '../assets/onboarding/spending.svg',
-    icon: 'shield',
-    accent: '#4BA3D8',
+    image: '../assets/onboarding/onboarding-spending.png',
   },
 ];
 
@@ -47,13 +32,7 @@ const authFooter = document.getElementById('auth-footer');
 const authPrimary = document.getElementById('auth-primary');
 const authLoading = document.getElementById('auth-loading');
 const authLoadingText = document.getElementById('auth-loading-text');
-const welcomeSubtitle = document.getElementById('welcome-subtitle');
-const welcomeDescription = document.getElementById('welcome-description');
-const welcomeIcon = document.getElementById('welcome-icon');
-const welcomeIconWrap = document.getElementById('welcome-icon-wrap');
 const welcomeSlide = document.getElementById('welcome-slide');
-const welcomeIllustration = document.getElementById('welcome-illustration');
-const welcomeDots = document.getElementById('welcome-dots');
 const authProgressFill = document.getElementById('auth-progress-fill');
 const authOtpTimer = document.getElementById('auth-otp-timer');
 const authOtpResend = document.getElementById('auth-otp-resend');
@@ -223,20 +202,10 @@ function updateWelcomeSlide(animate = false) {
     welcomeSlide.classList.add('auth-welcome-v3__card--swap');
   }
 
-  if (welcomeSubtitle) welcomeSubtitle.textContent = slide.title;
-  if (welcomeDescription) welcomeDescription.textContent = slide.description;
-  if (welcomeIcon) welcomeIcon.innerHTML = WELCOME_ICONS[slide.icon] || WELCOME_ICONS.wallet;
-  if (welcomeIconWrap) welcomeIconWrap.style.background = slide.accent;
   if (img) {
     img.src = slide.image;
     img.alt = slide.title;
   }
-
-  welcomeDots?.querySelectorAll('.auth-dots__dot').forEach((dot, index) => {
-    const isActive = index === welcomeIndex;
-    dot.classList.toggle('auth-dots__dot--active', isActive);
-    dot.style.background = isActive ? slide.accent : '';
-  });
 
   if (currentStep === 'welcome') {
     authPrimary.textContent = welcomeIndex === WELCOME_SLIDES.length - 1 ? 'Start' : 'Next';
