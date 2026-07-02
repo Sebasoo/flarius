@@ -122,6 +122,19 @@ const FlariusUI = (() => {
     });
   }
 
+  function initViewportHeight() {
+    const setAppHeight = () => {
+      const height = window.visualViewport?.height || window.innerHeight;
+      document.documentElement.style.setProperty('--app-height', `${Math.round(height)}px`);
+    };
+
+    setAppHeight();
+    window.visualViewport?.addEventListener('resize', setAppHeight);
+    window.visualViewport?.addEventListener('scroll', setAppHeight);
+    window.addEventListener('resize', setAppHeight);
+    window.addEventListener('orientationchange', setAppHeight);
+  }
+
   function initPageAnimations(root = document) {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -154,6 +167,9 @@ const FlariusUI = (() => {
     renderTransactionAvatar,
     staggerChildren,
     initPageAnimations,
+    initViewportHeight,
     resolveAssetPath,
   };
 })();
+
+FlariusUI.initViewportHeight();
