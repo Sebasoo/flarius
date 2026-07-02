@@ -149,13 +149,15 @@ function setStep(step) {
 
   if (step === 'pin') {
     pinValue = '';
-    updatePinDots('auth-pin-dots', pinValue);
+    pinInputs.reset();
+    pinInputs.focus();
   }
 
   if (step === 'pin-confirm') {
     pinConfirmValue = '';
     authPinError?.classList.add('auth-error--hidden');
-    updatePinDots('auth-pin-confirm-dots', pinConfirmValue);
+    pinConfirmInputs.reset();
+    pinConfirmInputs.focus();
   }
 
   if (step === 'fla-tag') {
@@ -361,54 +363,60 @@ function syncFlaTagPreview() {
   if (tagEl) tagEl.textContent = `#${flaTag}`;
 }
 
-function updatePinDots(containerId, value) {
-  const dots = document.getElementById(containerId)?.querySelectorAll('span');
-  dots?.forEach((dot, index) => {
-    dot.classList.toggle('auth-pin-dots__filled', index < value.length);
-  });
-}
-
-function bindKeypad(containerId, onComplete) {
+function initPinInputs(containerId, onComplete) {
   const container = document.getElementById(containerId);
-  if (!container) return;
+  if (!container) {
+    return { reset() {}, focus() {} };
+  }
 
-  container.addEventListener('click', (event) => {
-    const button = event.target.closest('[data-key]');
-    if (!button) return;
+  const boxes = Array.from(container.querySelectorAll('.auth-pin__box'));
 
-    const key = button.dataset.key;
-    let value = containerId === 'auth-keypad' ? pinValue : pinConfirmValue;
+  const getValue = () => boxes.map((box) => box.value).join('');
 
-    if (key === 'back') {
-      value = value.slice(0, -1);
-    } else {
-      value = `${value}${key}`.slice(0, 4);
-    }
+  const reset = () => {
+    boxes.forEach((box) => {
+      box.value = '';
+      box.classList.remove('auth-pin__box--filled');
+    });
+  };
 
-    if (containerId === 'auth-keypad') {
-      pinValue = value;
-      updatePinDots('auth-pin-dots', pinValue);
-      if (pinValue.length === 4) {
-        setTimeout(() => setStep('pin-confirm'), 250);
+  const focus = () => {
+    boxes[0]?.focus();
+  };
+
+  boxes.forEach((box, index) => {
+    box.addEventListener('input', () => {
+      box.value = box.value.replace(/\D/g, '').slice(-1);
+      box.classList.toggle('auth-pin__box--filled', Boolean(box.value));
+      if (box.value && boxes[index + 1]) boxes[index + 1].focus();
+      const value = getValue();
+      if (value.length === 4) onComplete(value);
+    });
+
+    box.addEventListener('keydown', (event) => {
+      if (event.key === 'Backspace' && !box.value && boxes[index - 1]) {
+        boxes[index - 1].focus();
       }
-    } else {
-      pinConfirmValue = value;
-      updatePinDots('auth-pin-confirm-dots', pinConfirmValue);
-      if (pinConfirmValue.length === 4) {
-        if (pinConfirmValue === pinValue) {
-          authPinError?.classList.add('auth-error--hidden');
-          setTimeout(() => setStep('face-id'), 250);
-        } else {
-          authPinError?.classList.remove('auth-error--hidden');
-          pinConfirmValue = '';
-          updatePinDots('auth-pin-confirm-dots', pinConfirmValue);
+    });
+
+    box.addEventListener('paste', (event) => {
+      event.preventDefault();
+      const pasted = (event.clipboardData?.getData('text') || '').replace(/\D/g, '').slice(0, 4);
+      pasted.split('').forEach((digit, digitIndex) => {
+        if (boxes[digitIndex]) {
+          boxes[digitIndex].value = digit;
+          boxes[digitIndex].classList.toggle('auth-pin__box--filled', Boolean(digit));
         }
-      }
-    }
-
-    onComplete?.(value);
+      });
+      if (pasted.length === 4) onComplete(pasted);
+    });
   });
+
+  return { reset, focus };
 }
+
+let pinInputs;
+let pinConfirmInputs;
 
 function updateDoneTitle() {
   const firstName = document.getElementById('auth-first-name')?.value.trim() || 'Robert';
@@ -446,8 +454,22 @@ function initAuth() {
 
   setStep('welcome');
   initOtpInputs();
-  bindKeypad('auth-keypad');
-  bindKeypad('auth-keypad-confirm');
+  pinInputs = initPinInputs('auth-pin', (value) => {
+    pinValue = value;
+    setTimeout(() => setStep('pin-confirm'), 200);
+  });
+  pinConfirmInputs = initPinInputs('auth-pin-confirm', (value) => {
+    pinConfirmValue = value;
+    if (pinConfirmValue === pinValue) {
+      authPinError?.classList.add('auth-error--hidden');
+      setTimeout(() => setStep('face-id'), 200);
+      return;
+    }
+    authPinError?.classList.remove('auth-error--hidden');
+    pinConfirmValue = '';
+    pinConfirmInputs.reset();
+    pinConfirmInputs.focus();
+  });
 
   authBack?.addEventListener('click', goBack);
   authSkip?.addEventListener('click', skipAuth);

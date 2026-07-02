@@ -159,22 +159,11 @@
             <h1 class="auth-title auth-title--sm">Create security code</h1>
             <p class="auth-subtitle">Create a 4-digit combination and remember it</p>
           </div>
-          <div class="auth-pin-dots auth-anim auth-anim--2" id="auth-pin-dots" aria-hidden="true">
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <div class="auth-keypad auth-anim auth-anim--3" id="auth-keypad">
-            <button type="button" data-key="1">1</button>
-            <button type="button" data-key="2">2</button>
-            <button type="button" data-key="3">3</button>
-            <button type="button" data-key="4">4</button>
-            <button type="button" data-key="5">5</button>
-            <button type="button" data-key="6">6</button>
-            <button type="button" data-key="7">7</button>
-            <button type="button" data-key="8">8</button>
-            <button type="button" data-key="9">9</button>
-            <span class="auth-keypad__spacer"></span>
-            <button type="button" data-key="0">0</button>
-            <button type="button" class="auth-keypad__back" data-key="back" aria-label="Delete">⌫</button>
+          <div class="auth-pin auth-anim auth-anim--2" id="auth-pin">
+            <input class="auth-pin__box" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="one-time-code" aria-label="Digit 1">
+            <input class="auth-pin__box" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 2">
+            <input class="auth-pin__box" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 3">
+            <input class="auth-pin__box" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 4">
           </div>
         </div>
       </section>
@@ -186,24 +175,13 @@
             <h1 class="auth-title auth-title--sm">Confirm security code</h1>
             <p class="auth-subtitle">Repeat the combination from the previous step</p>
           </div>
-          <div class="auth-pin-dots auth-anim auth-anim--2" id="auth-pin-confirm-dots" aria-hidden="true">
-            <span></span><span></span><span></span><span></span>
+          <div class="auth-pin auth-anim auth-anim--2" id="auth-pin-confirm">
+            <input class="auth-pin__box" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="one-time-code" aria-label="Digit 1">
+            <input class="auth-pin__box" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 2">
+            <input class="auth-pin__box" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 3">
+            <input class="auth-pin__box" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 4">
           </div>
           <p class="auth-error auth-error--hidden auth-anim auth-anim--2" id="auth-pin-error">Codes do not match. Try again.</p>
-          <div class="auth-keypad auth-anim auth-anim--3" id="auth-keypad-confirm">
-            <button type="button" data-key="1">1</button>
-            <button type="button" data-key="2">2</button>
-            <button type="button" data-key="3">3</button>
-            <button type="button" data-key="4">4</button>
-            <button type="button" data-key="5">5</button>
-            <button type="button" data-key="6">6</button>
-            <button type="button" data-key="7">7</button>
-            <button type="button" data-key="8">8</button>
-            <button type="button" data-key="9">9</button>
-            <span class="auth-keypad__spacer"></span>
-            <button type="button" data-key="0">0</button>
-            <button type="button" class="auth-keypad__back" data-key="back" aria-label="Delete">⌫</button>
-          </div>
         </div>
       </section>
 
@@ -273,7 +251,7 @@
 
   <script src="../js/auth-state.js"></script>
   <script src="../js/ui.js"></script>
-  <script src="../js/auth.js?v=9"></script>
+  <script src="../js/auth.js?v=10"></script>
   <script src="../js/animations.js"></script>
 </body>
 </html>

@@ -5452,61 +5452,47 @@ html.auth-redirecting body {
   margin-top: 2px;
 }
 
-.auth-pin-dots {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  margin: 32px 0 24px;
-}
-
-.auth-pin-dots span {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: rgba(11, 61, 92, 0.15);
-  transition: background 0.2s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.auth-pin-dots__filled {
-  background: var(--auth-navy) !important;
-  transform: scale(1.15);
-  box-shadow: 0 4px 12px rgba(8, 5, 80, 0.2);
-}
-
-.auth-keypad {
+.auth-pin {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
-  max-width: 300px;
-  margin: 0 auto;
+  max-width: 280px;
+  margin: 32px auto 0;
   width: 100%;
 }
 
-.auth-keypad button {
-  height: 60px;
-  border-radius: 18px;
+.auth-pin__box {
+  width: 100%;
+  aspect-ratio: 1;
+  max-height: 64px;
+  border: 2px solid var(--auth-border);
+  border-radius: 16px;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  text-align: center;
+  font: inherit;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
-  border: 1px solid var(--auth-border);
-  box-shadow: 0 4px 16px rgba(8, 5, 80, 0.05);
-  transition: transform 0.12s ease, background 0.12s ease;
+  -webkit-text-security: disc;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-.auth-keypad button:active {
-  transform: scale(0.92);
+.auth-pin__box:focus {
+  outline: none;
+  border-color: var(--auth-ocean);
+  box-shadow: 0 0 0 3px rgba(26, 138, 158, 0.15);
+}
+
+.auth-pin__box--filled {
+  border-color: var(--auth-ocean);
   background: rgba(255, 255, 255, 0.95);
 }
 
-.auth-keypad__spacer {
-  display: block;
-}
-
-.auth-keypad__back {
-  font-size: 20px !important;
+#auth-pin-error {
+  margin-top: 16px;
+  text-align: center;
 }
 
 .auth-face-stage {
