@@ -11,10 +11,25 @@
 </head>
 <body>
   <div class="phone home-page" id="app">
-    <div class="home-mesh" aria-hidden="true">
-      <span class="home-mesh__blob home-mesh__blob--1"></span>
-      <span class="home-mesh__blob home-mesh__blob--2"></span>
-      <span class="home-mesh__blob home-mesh__blob--3"></span>
+    <div class="home-mesh home-mesh--live" aria-hidden="true">
+      <div class="home-mesh__base"></div>
+      <div class="home-mesh__blur-field">
+        <div class="home-mesh__blur-field-inner"></div>
+      </div>
+      <div class="home-mesh__orb-wrap home-mesh__orb-wrap--1">
+        <div class="home-mesh__orb home-mesh__orb--1"></div>
+      </div>
+      <div class="home-mesh__orb-wrap home-mesh__orb-wrap--2">
+        <div class="home-mesh__orb home-mesh__orb--2"></div>
+      </div>
+      <div class="home-mesh__orb-wrap home-mesh__orb-wrap--3">
+        <div class="home-mesh__orb home-mesh__orb--3"></div>
+      </div>
+      <div class="home-mesh__orb-wrap home-mesh__orb-wrap--4">
+        <div class="home-mesh__orb home-mesh__orb--4"></div>
+      </div>
+      <div class="home-mesh__shimmer"></div>
+      <div class="home-mesh__veil"></div>
     </div>
     <div class="status-bar">
       <span class="status-bar__time">9:41</span>
@@ -161,6 +176,7 @@
       document.documentElement.classList.add('auth-redirecting');
     }
   </script>
+  <script src="js/home-mesh.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
