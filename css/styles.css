@@ -99,14 +99,8 @@ button {
     box-shadow: none;
   }
 
-  .status-bar {
-    height: 28px;
-    min-height: 28px;
+  .phone {
     padding-top: env(safe-area-inset-top, 0px);
-  }
-
-  .status-bar__time {
-    font-size: 13px;
   }
 
   .screen-content {
@@ -114,12 +108,12 @@ button {
   }
 
   .sa-page {
-    height: calc(var(--app-height) - 28px);
-    max-height: calc(var(--app-height) - 28px);
+    height: var(--app-height);
+    max-height: var(--app-height);
   }
 
   .placeholder-screen {
-    min-height: calc(var(--app-height) - 104px);
+    min-height: calc(var(--app-height) - 76px);
   }
 }
 
@@ -133,12 +127,7 @@ button {
 }
 
 .status-bar {
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 0 20px;
+  display: none;
 }
 
 .status-bar__time {
@@ -797,7 +786,7 @@ button {
 .qr-screen {
   display: flex;
   flex-direction: column;
-  min-height: calc(var(--phone-height) - 44px);
+  min-height: var(--phone-height);
   padding-bottom: 24px;
 }
 
@@ -3962,8 +3951,8 @@ button {
 .sa-page {
   display: flex;
   flex-direction: column;
-  height: calc(var(--phone-height) - 44px);
-  max-height: calc(100dvh - 44px);
+  height: var(--phone-height);
+  max-height: var(--phone-height);
   overflow: hidden;
 }
 
