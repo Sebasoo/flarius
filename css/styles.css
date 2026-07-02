@@ -5729,11 +5729,7 @@ html.auth-redirecting body {
 }
 
 .auth-welcome-v3__halo {
-  position: absolute;
-  inset: -18px;
-  border-radius: 50%;
-  filter: blur(28px);
-  transition: background 0.45s ease;
+  display: none;
 }
 
 .auth-welcome-v3__illus {
@@ -5742,10 +5738,13 @@ html.auth-redirecting body {
   width: 152px;
   height: 152px;
   display: block;
+  object-fit: contain;
+  object-position: center;
   border: none;
   border-radius: 0;
   box-shadow: none;
   background: transparent;
+  flex-shrink: 0;
 }
 
 .auth-welcome-v3__copy {
