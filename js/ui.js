@@ -123,16 +123,22 @@ const FlariusUI = (() => {
   }
 
   function initViewportHeight() {
+    let lastHeight = 0;
+
     const setAppHeight = () => {
-      const height = window.visualViewport?.height || window.innerHeight;
-      document.documentElement.style.setProperty('--app-height', `${Math.round(height)}px`);
+      const height = Math.round(window.visualViewport?.height || window.innerHeight);
+      if (height === lastHeight) return;
+      lastHeight = height;
+      document.documentElement.style.setProperty('--app-height', `${height}px`);
     };
 
     setAppHeight();
     window.visualViewport?.addEventListener('resize', setAppHeight);
-    window.visualViewport?.addEventListener('scroll', setAppHeight);
     window.addEventListener('resize', setAppHeight);
-    window.addEventListener('orientationchange', setAppHeight);
+    window.addEventListener('orientationchange', () => {
+      lastHeight = 0;
+      setTimeout(setAppHeight, 100);
+    });
   }
 
   function initPageAnimations(root = document) {

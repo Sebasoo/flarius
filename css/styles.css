@@ -81,13 +81,14 @@ button {
   body {
     height: var(--app-height);
     min-height: var(--app-height);
-    overflow: hidden;
   }
 
   body {
     padding: 0;
     align-items: stretch;
     background: var(--bg-primary);
+    overflow: hidden;
+    overscroll-behavior: none;
   }
 
   .phone {
@@ -97,10 +98,15 @@ button {
     max-height: var(--app-height);
     border-radius: 0;
     box-shadow: none;
+    padding-top: env(safe-area-inset-top, 0px);
   }
 
-  .phone {
-    padding-top: env(safe-area-inset-top, 0px);
+  .home-page {
+    padding-top: 0;
+  }
+
+  .home-page .screen-content {
+    padding-top: max(12px, env(safe-area-inset-top, 0px));
   }
 
   .screen-content {
@@ -5828,7 +5834,10 @@ html.auth-redirecting body {
 
 /* Home — Revolut-style mesh background */
 .home-page {
+  position: relative;
+  overflow: hidden;
   background: var(--bg-primary);
+  isolation: isolate;
 }
 
 .home-mesh {
@@ -5837,6 +5846,7 @@ html.auth-redirecting body {
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
+  transform: translateZ(0);
 }
 
 .home-mesh::before {
@@ -5853,6 +5863,8 @@ html.auth-redirecting body {
     rgba(174, 198, 234, 0.25) 240deg,
     rgba(255, 116, 15, 0.18) 360deg
   );
+  transform-origin: 50% 50%;
+  will-change: transform;
   animation: home-mesh-spin 18s linear infinite;
 }
 
