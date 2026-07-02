@@ -13,15 +13,24 @@ const STEPS = [
 const WELCOME_SLIDES = [
   {
     title: 'Manage your earnings at sea',
-    image: '../assets/onboarding/onboarding-earnings.png',
+    description: 'Keep track of your income and stay on top of what matters.',
+    image: '../assets/onboarding/slide-earnings-icon.svg',
+    accent: '#080550',
+    halo: 'rgba(79, 143, 232, 0.22)',
   },
   {
     title: 'Send money home in seconds',
-    image: '../assets/onboarding/onboarding-transfer.png',
+    description: 'Fast, secure transfers to your loved ones, anytime, anywhere.',
+    image: '../assets/onboarding/slide-transfer-icon.svg',
+    accent: '#D4577A',
+    halo: 'rgba(254, 145, 254, 0.24)',
   },
   {
     title: 'Stay in control of spending',
-    image: '../assets/onboarding/onboarding-spending.png',
+    description: 'Monitor your expenses, set limits, and make smarter financial choices.',
+    image: '../assets/onboarding/slide-spending-icon.svg',
+    accent: '#4F8FE8',
+    halo: 'rgba(174, 198, 234, 0.35)',
   },
 ];
 
@@ -33,6 +42,10 @@ const authPrimary = document.getElementById('auth-primary');
 const authLoading = document.getElementById('auth-loading');
 const authLoadingText = document.getElementById('auth-loading-text');
 const welcomeSlide = document.getElementById('welcome-slide');
+const welcomeSubtitle = document.getElementById('welcome-subtitle');
+const welcomeDescription = document.getElementById('welcome-description');
+const welcomeHalo = document.getElementById('welcome-halo');
+const welcomeDots = document.getElementById('welcome-dots');
 const authProgressFill = document.getElementById('auth-progress-fill');
 const authOtpTimer = document.getElementById('auth-otp-timer');
 const authOtpResend = document.getElementById('auth-otp-resend');
@@ -206,6 +219,16 @@ function updateWelcomeSlide(animate = false) {
     img.src = slide.image;
     img.alt = slide.title;
   }
+
+  if (welcomeSubtitle) welcomeSubtitle.textContent = slide.title;
+  if (welcomeDescription) welcomeDescription.textContent = slide.description;
+  if (welcomeHalo) welcomeHalo.style.background = slide.halo;
+
+  welcomeDots?.querySelectorAll('.auth-dots__dot').forEach((dot, index) => {
+    const isActive = index === welcomeIndex;
+    dot.classList.toggle('auth-dots__dot--active', isActive);
+    dot.style.background = isActive ? slide.accent : '';
+  });
 
   if (currentStep === 'welcome') {
     authPrimary.textContent = welcomeIndex === WELCOME_SLIDES.length - 1 ? 'Start' : 'Next';
