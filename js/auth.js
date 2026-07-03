@@ -183,11 +183,11 @@ function finishAuth(skipped = false) {
   hideLoading();
 
   const user = {
-    firstName: document.getElementById('auth-first-name')?.value.trim() || 'Robert',
-    lastName: document.getElementById('auth-last-name')?.value.trim() || 'Hotim',
-    email: document.getElementById('auth-email')?.value.trim() || 'robert@flarius.com',
-    phone: document.getElementById('auth-phone')?.value.trim() || '+33 6 12 34 56 78',
-    flaTag: document.getElementById('auth-fla-tag')?.value.trim() || 'robert',
+    firstName: document.getElementById('auth-first-name')?.value.trim() || '',
+    lastName: document.getElementById('auth-last-name')?.value.trim() || '',
+    email: document.getElementById('auth-email')?.value.trim() || '',
+    phone: document.getElementById('auth-phone')?.value.trim() || '',
+    flaTag: document.getElementById('auth-fla-tag')?.value.trim() || '',
   };
 
   FlariusAuth.complete({ skipped, user });
@@ -344,11 +344,12 @@ function initOtpInputs() {
 }
 
 function syncFlaTagPreview() {
-  const firstName = document.getElementById('auth-first-name')?.value.trim() || 'Robert';
-  const lastName = document.getElementById('auth-last-name')?.value.trim() || 'Hotim';
-  const flaTag = document.getElementById('auth-fla-tag')?.value.trim() || 'robert';
-  const initials = FlariusUI.getInitials(`${firstName} ${lastName}`);
-  const palette = FlariusUI.getPalette(`${firstName} ${lastName}`);
+  const firstName = document.getElementById('auth-first-name')?.value.trim() || '';
+  const lastName = document.getElementById('auth-last-name')?.value.trim() || '';
+  const flaTag = document.getElementById('auth-fla-tag')?.value.trim() || '';
+  const fullName = [firstName, lastName].filter(Boolean).join(' ');
+  const initials = FlariusUI.getInitials(fullName);
+  const palette = FlariusUI.getPalette(fullName || 'user');
 
   const avatar = document.getElementById('auth-preview-avatar');
   if (avatar) {
@@ -359,8 +360,8 @@ function syncFlaTagPreview() {
 
   const nameEl = document.getElementById('auth-preview-name');
   const tagEl = document.getElementById('auth-preview-tag');
-  if (nameEl) nameEl.textContent = `${firstName} ${lastName}`;
-  if (tagEl) tagEl.textContent = `#${flaTag}`;
+  if (nameEl) nameEl.textContent = fullName;
+  if (tagEl) tagEl.textContent = flaTag ? `#${flaTag}` : '#';
 }
 
 function initPinInputs(containerId, onComplete) {
@@ -419,9 +420,11 @@ let pinInputs;
 let pinConfirmInputs;
 
 function updateDoneTitle() {
-  const firstName = document.getElementById('auth-first-name')?.value.trim() || 'Robert';
+  const firstName = document.getElementById('auth-first-name')?.value.trim() || '';
   const title = document.getElementById('auth-done-title');
-  if (title) title.textContent = `Welcome aboard, ${firstName}!`;
+  if (title) {
+    title.textContent = firstName ? `Welcome aboard, ${firstName}!` : 'Welcome aboard!';
+  }
 }
 
 function handlePrimary() {
@@ -491,6 +494,8 @@ function initAuth() {
 
   document.getElementById('auth-face-enable')?.addEventListener('click', completeFaceIdStep);
   document.getElementById('auth-face-skip')?.addEventListener('click', () => finishAuth(false));
+
+  syncFlaTagPreview();
 }
 
 initAuth();
